@@ -16,13 +16,13 @@ import javax.persistence.OneToMany;
 public class User {
 
 	@Id
-	Long id;
+	private Long id;
 	
-	String name;
+	private String name;
 	
-	String city;
+	private String city;
 	
-	String gender;
+	private String gender;
 	
 	@OneToMany(mappedBy="user", cascade = {CascadeType.ALL})
 	transient Set<Review> review;

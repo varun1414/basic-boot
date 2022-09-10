@@ -26,6 +26,9 @@ public class UserService {
 
 	Logger logger = LoggerFactory.getLogger(UserService.class);
 
+	/*
+	 * adds new user
+	 */
 	public ResponseEntity<String> addUser(User user) {
 		// TODO Auto-generated method stub
 		try {
@@ -38,6 +41,10 @@ public class UserService {
 		}
 	}
 	
+
+	/*
+	 * delete user based on id
+	 */
 	public ResponseEntity<String> deleteRecord(Long id) {
 		// TODO Auto-generated method stub
 		try {
@@ -57,6 +64,9 @@ public class UserService {
 		}
 	}
 	
+	/*
+	 * updates user based on id
+	 */
 	public ResponseEntity<String> updateUser(Long id, User user) {
 		// TODO Auto-generated method stub
 		String message = "User updated successfully";

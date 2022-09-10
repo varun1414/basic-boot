@@ -12,6 +12,10 @@ import com.example.standards.repository.HotelRepository;
 import com.example.standards.repository.ReviewRepository;
 import com.example.standards.repository.UserRepository;
 
+/*
+ * Methods to access the repository functions
+ */
+
 @Component
 public class CustomORM {
 

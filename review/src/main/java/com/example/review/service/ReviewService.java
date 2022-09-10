@@ -48,6 +48,9 @@ public class ReviewService {
 		
 	}
 	
+	/*
+	 * returns JsonNode with the list of reviews filtered by given params
+	 */
 	public JsonNode getReview(String hotelName, String city, String gender, String rating) {
 		// TODO Auto-generated method stub
 		List<Review> hotelList = new ArrayList();

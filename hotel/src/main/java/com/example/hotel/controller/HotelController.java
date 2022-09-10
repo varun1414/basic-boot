@@ -27,11 +27,18 @@ public class HotelController {
 	HotelService hotelService;
 	
 	
+	/*
+	 * Controller to add a new hotel
+	 */
 	@PostMapping("/hotel/add")
 	public ResponseEntity<String> addHotel(@RequestBody Hotel hotel) {
 		return hotelService.addHotel(hotel);
 	}
 	
+	
+	/*
+	 * Controller to get a hotel based on specified params
+	 */
 	@GetMapping("/hotel/search")
 	public JsonNode getHotel(
 			@RequestParam(required = false) String city, 
@@ -43,11 +50,17 @@ public class HotelController {
 			return hotelService.getHotel(city, date, rooms, stars, facilities);
 			}
 	
+	/*
+	 * Controller to delete hotel record based on the id
+	 */
 	 @DeleteMapping("/hotel/delete/{id}")
 	 public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
 	    return hotelService.deleteRecord(id);
 	 }
 	 
+	/*
+	 * Controller to update hotel record based on the id
+	 */
 	 @PutMapping("/hotel/update/{id}")
 	 public ResponseEntity<String> updateRecord(@PathVariable("id") Long id, 
 			 @RequestBody Hotel hotel) {

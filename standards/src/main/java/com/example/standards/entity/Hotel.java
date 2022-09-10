@@ -21,30 +21,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Hotel {
 
 	@Id
-	long id;
+	private long id;
 	
-	String name;
+	private String name;
 
-	String city;
+	private String city;
 	
-	Date availableDate;
+	private Date availableDate;
 	
-	int roomsRequired;
+	private int roomsRequired;
 	
-	int stars;
+	private int stars;
 	
-	int cost;
+	private int cost;
 	
-	boolean wifi;
+	private boolean wifi;
 	
-	boolean restaurant;
+	private boolean restaurant;
 	
-	boolean ac;
+	private boolean ac;
 	
-	boolean meal;
+	private boolean meal;
 
 	@OneToMany(mappedBy = "hotel", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	transient List<Review> review;
+	private transient List<Review> review;
 	
 	public long getId() {
 		return id;

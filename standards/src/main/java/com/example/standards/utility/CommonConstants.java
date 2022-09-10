@@ -1,5 +1,8 @@
 package com.example.standards.utility;
 
+/*
+ * Class with commonly used constants
+ */
 public class CommonConstants {
 	
 	public static final String WIFI = "wifi";

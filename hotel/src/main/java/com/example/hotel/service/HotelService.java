@@ -32,6 +32,9 @@ public class HotelService {
 	Logger logger = LoggerFactory.getLogger(HotelService.class);
 
 	
+	/*
+	 * returns 200OK if hotel is added successfully, else returns 500 response
+	 */
 	public ResponseEntity<String> addHotel(Hotel hotel) {
 		try {
 			custom.addHotel(hotel);	
@@ -44,7 +47,9 @@ public class HotelService {
 		
 	}
 
-
+	/*
+	 * returns an JsonObject with the list of searched hotels in ascending order
+	 */
 	public JsonNode getHotel(String city, Date date, Integer rooms, String stars,
 		List<String> facilities) {
 		
@@ -120,14 +125,16 @@ public class HotelService {
 	}
 
 
-	public void getHotelByCity(String city, Map<Long, Hotel> hotelMap){
+	private void getHotelByCity(String city, Map<Long, Hotel> hotelMap){
 			List<Hotel> cityHotel = custom.getHotelBycity(city);
 			for(Hotel itrHotel: cityHotel) {
 				hotelMap.put(itrHotel.getId(), itrHotel);
 			}
 	}
-
-
+	
+	/*
+	 * deletes hotel if id is present
+	 */
 	public ResponseEntity<String> deleteRecord(Long id) {
 		// TODO Auto-generated method stub
 		try {
@@ -147,12 +154,9 @@ public class HotelService {
 		}
 	}
 
-
-	public ResponseEntity<String> updateRecord(Long id, Hotel hotel) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/*
+	 * updates hotel if id is present
+	 */
 
 	public ResponseEntity<String> updateHotel(Long id, Hotel hotel) {
 		// TODO Auto-generated method stub

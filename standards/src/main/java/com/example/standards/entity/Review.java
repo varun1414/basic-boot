@@ -15,19 +15,19 @@ import javax.persistence.ManyToOne;
 public class Review {
 	
 	@Id
-	long id;
+	private long id;
 	
-	String comment;
+	private String comment;
 	
-	String rating;
+	private String rating;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "hotel_id")
-	Hotel hotel;
+	private Hotel hotel;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	User user;
+	private User user;
 
 	public long getId() {
 		return id;
