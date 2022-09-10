@@ -62,7 +62,7 @@ curl --location --request DELETE 'localhost:8000/hotel/delete/6' \
 --header 'Content-Type: application/json' \
 }'
 ```
-4. Search Hotel ( query parameters include: city, date, rooms, stars, facilities(array) ) - reresponse in sorted order:
+4. Search Hotel ( query parameters include: city, date, rooms, stars, facilities(array) ) - response in sorted order:
 ```
 curl --location --request GET 'localhost:8000/hotel/search?city=panjim'
 ```
