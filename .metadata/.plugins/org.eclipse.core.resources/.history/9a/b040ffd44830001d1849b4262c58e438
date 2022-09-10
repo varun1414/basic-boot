@@ -1,0 +1,15 @@
+package com.example.user.service;
+
+import com.example.standards.entity.User;
+
+public class UserService {
+
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		if(user.getReview()!= null && !user.getReview().isEmpty()) {
+			List<Review> review = 
+		}
+		
+	}
+
+}

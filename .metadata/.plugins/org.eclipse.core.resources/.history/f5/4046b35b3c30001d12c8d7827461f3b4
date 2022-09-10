@@ -1,0 +1,71 @@
+package com.example.standards.entity;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
+public class User {
+
+	@Id
+	int id;
+	
+	String name;
+	
+	String city;
+	
+	@ManyToMany
+	List<Hotel> hotel;
+	
+	@OneToMany
+	Review review;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public List<Hotel> getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(List<Hotel> hotel) {
+		this.hotel = hotel;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+	
+
+
+	
+	
+	
+}

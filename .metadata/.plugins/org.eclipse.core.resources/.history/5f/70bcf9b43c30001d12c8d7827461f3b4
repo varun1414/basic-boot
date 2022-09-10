@@ -1,0 +1,56 @@
+package com.example.standards.entity;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Review {
+	
+	@Id
+	int id;
+	
+	String comment;
+	
+	int ratings;
+	
+	@ManyToOne
+	Hotel hotel;
+	
+	@ManyToOne
+	User user;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+
+
+
+
+	public int getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(int ratings) {
+		this.ratings = ratings;
+	}
+	
+	
+	
+	
+}

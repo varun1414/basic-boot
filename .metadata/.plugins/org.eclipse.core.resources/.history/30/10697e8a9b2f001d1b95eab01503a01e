@@ -1,0 +1,29 @@
+package com.example.hotel;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+
+	int ids;
+	
+	String name;
+
+	public int getId() {
+		return ids;
+	}
+
+	public void setId(int id) {
+		this.ids = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+}

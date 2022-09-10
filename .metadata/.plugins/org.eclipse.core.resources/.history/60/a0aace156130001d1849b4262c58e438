@@ -1,0 +1,28 @@
+package com.example.review.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Review;
+
+@Service
+public class ReviewService {
+
+	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	
+	@Autowired
+	CustomORM custom;
+	
+	public void addReview(Review review) {
+		// TODO Auto-generated method stub
+		try {
+			custom.addReview(review);
+		} catch(Exception e) {
+			Logger
+		}
+		
+	}
+
+
+}

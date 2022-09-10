@@ -1,0 +1,86 @@
+package com.example.review.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.hotel.service.HotelService;
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Review;
+import com.example.standards.entity.User;
+import com.example.user.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class ReviewService {
+
+	Logger logger = LoggerFactory.getLogger(ReviewService.class);
+	
+	@Autowired
+	CustomORM custom;
+	
+	@Autowired
+	HotelService hotelService;
+	
+	@Autowired
+	UserService userService;
+	
+	
+	public ResponseEntity<String> addReview(Review review) {
+		// TODO Auto-generated method stub
+		try {
+			custom.addReview(review);
+			return new ResponseEntity("Review added successfully", HttpStatus.OK);
+		} catch(Exception e) {
+			logger.error("ReviewService.addReview -> Exception",e);
+			return new ResponseEntity("Review added failed", HttpStatus.OK);
+
+		}
+		
+	}
+	
+	public JsonNode getReview(String hotelName, String city, String gender, String rating) {
+		// TODO Auto-generated method stub
+		List<Review> hotelList = new ArrayList();
+		if( hotelName != null && !hotelName.equals("") ) {
+			hotelList = custom.getReviewByHotelName(hotelName);
+		}
+		List<Review> finalList = new ArrayList();
+		for(Review review: hotelList) {
+				if( review != null && !review.equals("")) {
+					if( review.getRating().equals(rating) ) {
+						finalList.add(review);
+					}
+				}
+				if( gender != null && !gender.equals("") ) {
+					if( review.getUser().getGender().equals(gender) ) {
+						finalList.add(review);
+					}
+				}
+				
+				if( city != null && !city.equals("") ) {
+					if( review.getUser().getCity().equals(city) ) {
+						finalList.add(review);
+					}
+				}
+		}
+		if(finalList.isEmpty()) {
+			finalList = hotelList;
+		}
+
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode json = mapper.convertValue(finalList, JsonNode.class);
+		return json;
+	}
+
+
+}

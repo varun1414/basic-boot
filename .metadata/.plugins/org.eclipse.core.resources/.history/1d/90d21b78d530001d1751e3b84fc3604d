@@ -1,0 +1,44 @@
+package com.example.hotel.service;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyMap;
+import static org.mockito.ArgumentMatchers.anyString;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class HotelServiceTest {
+	
+	@Mock
+	HotelService hotelService;
+	
+	
+	@Test
+	public void getHotel_success() {
+		HotelService spy = Mockito.spy(hotelService);
+		Mockito.doNothing().when(spy).getHotelByCity(anyString(), anyMap());
+		Mockito.doNothing().when(spy).getHotelByStars(anyString(), anyMap());
+
+		Mockito.doNothing().when(spy).getHotelByFacilities(anyList(), anyMap());
+
+		Mockito.doNothing().when(spy).getHotelByRooms(any(Integer.class), anyMap());
+		
+		try {
+			assertEquals(new JsonNode(), spy.getHotel("city", null, 1, "xyz", null));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

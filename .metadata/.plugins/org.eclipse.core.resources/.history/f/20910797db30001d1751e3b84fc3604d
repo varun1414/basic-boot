@@ -1,0 +1,8 @@
+package com.example.standards.utility;
+
+public class CommonConstants {
+	
+	public final String WIFI = "wifi";
+	
+
+}

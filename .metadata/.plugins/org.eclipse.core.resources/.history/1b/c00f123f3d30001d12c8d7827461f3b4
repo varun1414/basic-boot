@@ -1,0 +1,57 @@
+package com.example.standards.utility;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Facilities {
+	
+	@Id
+	int id;
+	
+	boolean wifi;
+	
+	boolean restaurant;
+	
+	boolean ac;
+	
+	boolean meals;
+
+	@OneToOne
+	Hotel hotel;
+	
+	public boolean isWifi() {
+		return wifi;
+	}
+
+	public void setWifi(boolean wifi) {
+		this.wifi = wifi;
+	}
+
+	public boolean isRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(boolean restaurant) {
+		this.restaurant = restaurant;
+	}
+
+	public boolean isAc() {
+		return ac;
+	}
+
+	public void setAc(boolean ac) {
+		this.ac = ac;
+	}
+
+	public boolean isMeals() {
+		return meals;
+	}
+
+	public void setMeals(boolean meals) {
+		this.meals = meals;
+	}
+	
+	
+
+}

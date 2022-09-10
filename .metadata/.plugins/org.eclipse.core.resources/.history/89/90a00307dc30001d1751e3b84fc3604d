@@ -1,0 +1,13 @@
+package com.example.standards.utility;
+
+public class CommonConstants {
+	
+	public final String WIFI = "wifi";
+	
+	public final String MEALS = " meals";
+	
+	public final String AC = "ac";
+	
+	public final String RESTAURANTs = " restaurant";
+
+}

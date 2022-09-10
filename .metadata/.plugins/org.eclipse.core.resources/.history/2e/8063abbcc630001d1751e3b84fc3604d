@@ -1,0 +1,32 @@
+package com.example.user.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Hotel;
+import com.example.standards.entity.User;
+import com.fasterxml.jackson.databind.JsonNode;
+
+@Service
+public class UserService {
+
+	@Autowired
+	CustomORM custom;
+	
+	@Autowired
+	HotelService hotelService;
+	
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		custom.addUser(user);
+		
+	}
+
+
+
+}

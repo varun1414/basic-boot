@@ -1,0 +1,37 @@
+package com.example.user.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Hotel;
+import com.example.standards.entity.User;
+import com.fasterxml.jackson.databind.JsonNode;
+
+@Service
+public class UserService {
+
+	@Autowired
+	CustomORM custom;
+	
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		custom.addUser(user);
+		
+	}
+
+	public JsonNode getUser(String city, String gender, List<String> rating) {
+		// TODO Auto-generated method stub
+		if( city!=null && !city.equals("") ) {
+			List<User> cityUser = custom.getUserByCity(city);
+			 = custom.getHotelByRooms(rooms);
+			for(Hotel itrHotel: cityHotel) {
+				hotelMap.put(itrHotel.getId(), itrHotel);
+			}
+		}
+		return null;
+	}
+
+}

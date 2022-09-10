@@ -1,0 +1,28 @@
+package com.example.user.controller;
+import com.example.standards.entity.User;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.user.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+
+@RestController
+public class UserController {
+
+	@Autowired
+	UserService userService;
+	
+	@PostMapping("/add")
+	public void addUser(@RequestBody User user) {
+		userService.addUser(user);
+	}
+	}

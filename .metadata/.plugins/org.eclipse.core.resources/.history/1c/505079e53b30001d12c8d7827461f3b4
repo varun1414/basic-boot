@@ -1,0 +1,126 @@
+package com.example.standards.entity;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.example.standards.utility.Facilities;
+
+@Entity
+public class Hotel {
+	
+	@Id
+	int id;
+	
+	String name;
+
+	String city;
+	
+	Date availableDate;
+	
+	int roomsRequired;
+	
+	int stars;
+	
+	int cost;
+	
+	Facilities facilities;
+	
+	@ManyToMany
+	List<User> user;
+	
+	@OneToMany
+	Review review;
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Date getAvailableDate() {
+		return availableDate;
+	}
+
+	public void setAvailableDate(Date availableDate) {
+		this.availableDate = availableDate;
+	}
+
+	public int getRoomsRequired() {
+		return roomsRequired;
+	}
+
+	public void setRoomsRequired(int roomsRequired) {
+		this.roomsRequired = roomsRequired;
+	}
+
+	public int getStars() {
+		return stars;
+	}
+
+	public void setStars(int stars) {
+		this.stars = stars;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+	public Facilities getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(Facilities facilities) {
+		this.facilities = facilities;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+	
+	
+	
+
+
+	
+	
+
+}

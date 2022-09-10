@@ -1,0 +1,14 @@
+package com.example.review.service;
+
+import com.example.standards.entity.Review;
+
+@Service
+public class ReviewService {
+
+	public void addReview(Review review) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

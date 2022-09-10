@@ -1,0 +1,16 @@
+package com.example.hotel.service;
+
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.example.hotel.controller.HotelController;
+
+@RunWith(MockitoJUnitRunner.class)
+public class HotelServiceTest {
+	
+	@Mock
+	HotelService hotelService;
+	
+
+}

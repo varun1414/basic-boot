@@ -1,0 +1,129 @@
+package com.example.hotel.service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Hotel;
+import com.example.standards.utility.CommonConstants;
+import com.example.standards.utility.CompareCost;
+import com.example.standards.utility.CompareRating;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class HotelService {
+
+	@Autowired
+	CustomORM custom;
+	
+	Logger logger = LoggerFactory.getLogger(HotelService.class);
+
+	
+	public ResponseEntity<String> addHotel(Hotel hotel) {
+		try {
+			custom.addHotel(hotel);	
+			return new ResponseEntity("Hotel added successfully", HttpStatus.OK);
+		} catch(Exception e) {
+			logger.error("HotelService.addHotel -> Exception",e);
+			return new ResponseEntity("adding hotel failure", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		
+	}
+
+
+	public JsonNode getHotel(String city, Date date, Integer rooms, String stars,
+		List<String> facilities) throws Exception {
+		
+		Map<Long, Hotel> hotelMap = new HashMap();
+		List<Hotel> hotelList = new ArrayList();
+		if( city != null && !city.equals( CommonConstants.BLANK ) ) {
+			getHotelByCity(city, hotelMap);
+		}
+		
+		if( stars != null && !stars.equals( CommonConstants.BLANK ) ) {
+			getHotelByStars(stars, hotelMap);
+		}
+		
+		if( facilities!= null && !facilities.isEmpty() ) {
+			getHotelByFacilities(facilities, hotelMap);
+		}
+			
+		if(rooms != null) {
+			getHotelByRooms(rooms, hotelMap);
+		}
+		for(Map.Entry<Long, Hotel> entry: hotelMap.entrySet()) {
+			hotelList.add(entry.getValue());
+		}
+		Collections.sort(hotelList, new CompareRating());
+		Collections.sort(hotelList, new CompareCost());
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode json = mapper.convertValue(hotelList, JsonNode.class);
+		return json;
+	}
+	
+	private void getHotelByRooms(int rooms, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = custom.getHotelByRooms(rooms);
+		for(Hotel itrHotel: cityHotel) {
+			hotelMap.put(itrHotel.getId(), itrHotel);
+		}
+	}
+		
+	private void getHotelByStars(String stars, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = custom.getHotelByStars(stars);
+		for(Hotel itrHotel: cityHotel) {
+			hotelMap.put(itrHotel.getId(), itrHotel);
+		}
+	}
+
+
+	private void getHotelByFacilities(List<String> facilities, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = new ArrayList();
+		for(String facility: facilities) {
+			switch(facility) {
+				case CommonConstants.WIFI:
+					cityHotel.addAll(custom.getHotelByWifi(facility));
+					break;
+				case CommonConstants.RESTAURANT:
+					cityHotel.addAll(custom.getHotelByRest(facility));
+					break;
+				case CommonConstants.AC:
+					cityHotel.addAll(custom.getHotelByAc(facility));
+					break;
+				case CommonConstants.MEALS:
+					cityHotel.addAll(custom.getHotelByMeal(facility));
+					break;
+			}
+		}
+		for(Hotel itrHotel: cityHotel) {
+			if( hotelMap.get(itrHotel) != null ) {
+				hotelMap.put(itrHotel.getId(), itrHotel);
+			}
+		}
+		
+	}
+
+
+	public void getHotelByCity(String city, Map<Long, Hotel> hotelMap){
+			List<Hotel> cityHotel = custom.getHotelBycity(city);
+			for(Hotel itrHotel: cityHotel) {
+				hotelMap.put(itrHotel.getId(), itrHotel);
+			}
+	}
+	
+
+}

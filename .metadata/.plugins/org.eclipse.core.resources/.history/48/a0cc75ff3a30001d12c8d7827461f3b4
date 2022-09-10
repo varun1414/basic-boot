@@ -1,0 +1,15 @@
+package com.example.standards.utility;
+
+public class Facilities {
+	
+	boolean wifi;
+	
+	boolean restaurant;
+	
+	boolean ac;
+	
+	boolean meals;
+	
+	
+
+}

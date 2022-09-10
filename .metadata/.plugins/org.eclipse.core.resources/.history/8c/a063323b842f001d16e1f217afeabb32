@@ -1,0 +1,5 @@
+package com.example.standards.entity;
+
+public class User {
+
+}

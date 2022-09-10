@@ -1,0 +1,7 @@
+package com.example.hotel.controller;
+
+@ExtendWith(MockitoExtension.class)
+@RunWith(JUnitPlatform.class)
+public class HotelControllerTest {
+
+}

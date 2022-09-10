@@ -1,0 +1,27 @@
+package com.example.hotel.service;
+
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class HotelServiceTest {
+	
+	@Mock
+	HotelService hotelService;
+	
+	
+	@Test
+	public void getHotel_success() {
+		HotelService spy = Mockito.spy(hotelService);
+		Mockito.doNothing().when(spy).getHotelByCity(anyString(), anyL(Hotel.class));
+
+	}
+
+}

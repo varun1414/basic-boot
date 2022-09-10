@@ -1,0 +1,115 @@
+package com.example.hotel.service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.Facilities;
+import com.example.standards.entity.Hotel;
+import com.example.standards.utility.CompareCost;
+import com.example.standards.utility.CompareRating;
+
+@Service
+public class HotelService {
+
+	@Autowired
+	CustomORM custom;
+	
+	
+	public void addHotel(Hotel hotel) {
+		// TODO Auto-generated method stub
+//		Facilities facility = hotel.getFacility();
+//		facility.setHotel(hotel);
+//		custom.addFacilities(facility);
+		custom.addHotel(hotel);	
+	}
+
+
+	public List<Hotel> getHotel(String city, Date date, int rooms, String stars,
+		List<String> facilities) {
+		
+		Map<Long, Hotel> hotelMap = new HashMap();
+		List<Hotel> hotelList = new ArrayList();
+		if( city != null && !city.equals("") ) {
+			getHotelByCity(city, hotelMap);
+		}
+		
+		if( stars != null && !stars.equals("") ) {
+			getHotelByStars(stars, hotelMap);
+		}
+		
+		if( facilities!= null && !facilities.isEmpty() ) {
+			getHotelByFacilities(facilities, hotelMap);
+		}
+			
+		getHotelByRooms(rooms, hotelMap);
+		for(Map.Entry<Long, Hotel> entry: hotelMap.entrySet()) {
+			hotelList.add(entry.getValue());
+		}
+		Collections.sort(hotelList, new CompareRating());
+		Collections.sort(hotelList, new CompareCost());
+
+		return hotelList;
+	}
+	
+	private void getHotelByRooms(int rooms, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = custom.getHotelByRooms(rooms);
+		for(Hotel itrHotel: cityHotel) {
+			hotelMap.put(itrHotel.getId(), itrHotel);
+		}
+	}
+		
+	private void getHotelByStars(String stars, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = custom.getHotelByStars(stars);
+		for(Hotel itrHotel: cityHotel) {
+			hotelMap.put(itrHotel.getId(), itrHotel);
+		}
+	}
+
+
+	private void getHotelByFacilities(List<String> facilities, Map<Long, Hotel> hotelMap) {
+		// TODO Auto-generated method stub
+		List<Hotel> cityHotel = new ArrayList();
+		for(String facility: facilities) {
+			switch(facility) {
+				case "wifi":
+					cityHotel.addAll(custom.getHotelByWifi(facility));
+					break;
+				case "restaurant":
+					cityHotel.addAll(custom.getHotelByRest(facility));
+					break;
+				case "ac":
+					cityHotel.addAll(custom.getHotelByAc(facility));
+					break;
+				case "meals":
+					cityHotel.addAll(custom.getHotelByMeal(facility));
+					break;
+			}
+		}
+		for(Hotel itrHotel: cityHotel) {
+			if( hotelMap.get(itrHotel) != null ) {
+				hotelMap.put(itrHotel.getId(), itrHotel);
+			}
+		}
+		
+	}
+
+
+	public void getHotelByCity(String city, Map<Long, Hotel> hotelMap){
+			List<Hotel> cityHotel = custom.getHotelBycity(city);
+			for(Hotel itrHotel: cityHotel) {
+				hotelMap.put(itrHotel.getId(), itrHotel);
+			}
+	}
+	
+
+}

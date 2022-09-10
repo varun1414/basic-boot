@@ -1,0 +1,19 @@
+package com.example.review.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.standards.entity.Review;
+
+@Service
+public class ReviewService {
+
+	@Autowired
+	CustomORM custom;
+	public void addReview(Review review) {
+		// TODO Auto-generated method stub
+		custom.addReview(review);
+		
+	}
+
+
+}

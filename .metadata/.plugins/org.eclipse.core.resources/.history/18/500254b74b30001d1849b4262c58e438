@@ -1,0 +1,22 @@
+package com.example.user.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.standards.dao.CustomORM;
+import com.example.standards.entity.User;
+
+@Service
+public class UserService {
+
+	@Autowired
+	CustomORM custom;
+	
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		custom.add
+		custom.addUser(user);
+		
+	}
+
+}

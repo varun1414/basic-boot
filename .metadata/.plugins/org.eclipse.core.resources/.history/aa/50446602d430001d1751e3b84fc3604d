@@ -1,0 +1,17 @@
+package com.example.hotel.service;
+
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class HotelServiceTest {
+	
+	@Mock
+	HotelService hotelService;
+	
+	HotelService spy = Mockito.spy(HotelService);
+	
+
+}

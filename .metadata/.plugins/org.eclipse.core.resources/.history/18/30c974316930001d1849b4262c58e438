@@ -1,0 +1,9 @@
+package com.example.standards.utility;
+
+import java.util.Comparator;
+
+import com.example.standards.entity.Hotel;
+
+class CompareRating  implements Comparator<Hotel>{
+
+}
