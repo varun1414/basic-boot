@@ -12,11 +12,10 @@ DBMS: MySql
 
 Junit Tests:
 1. Two Junit test cases for the controller of the Hotel. ( To display the concept )
-2. Run the services on specified ports
 
 Steps to run:
 1. Unzip the project
-2. run the 
+2. Run the services on specified ports
 
 # Functionalites and the cUrls for the REST endpoints:
 
