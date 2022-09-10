@@ -60,19 +60,6 @@ curl --location --request PUT 'localhost:8000/hotel/update/6' \
 ```
 curl --location --request DELETE 'localhost:8000/hotel/delete/6' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "id":1,
-    "name":"taj",
-    "city":"panjim",
-    "dateAvailable" : "09/09/2022",
-    "roomsRequired":2,
-    "star":5,
-    "cost":12,
-    "facility":{
-        "id":0,
-        "wifi":true
-    }
-
 }'
 ```
 4. Search Hotel ( query parameters include: city, date, rooms, stars, facilities(array) ) - reresponse in sorted order:
@@ -120,15 +107,5 @@ curl --location --request POST 'localhost:8888/review/add' \
 ```
 curl --location --request GET 'localhost:8888/review/search?hotelName=taj&city=pune' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "id":9031,
-    "comment":"very nice",
-    "rating":"2",
-    "hotel":{
-        "id":123111
-    },
-    "user":{
-        "id":15112111
-    }
-}'
+
 ```
