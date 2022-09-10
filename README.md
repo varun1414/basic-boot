@@ -21,6 +21,7 @@ Steps to run:
 # Functionalites and the cUrls for the REST endpoints:
 
 1. Add new hotel:
+```
 curl --location --request POST 'localhost:8000/hotel/add' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -37,8 +38,9 @@ curl --location --request POST 'localhost:8000/hotel/add' \
     }
 
 }'
-
+```
 2. Update hotel:
+```
 curl --location --request PUT 'localhost:8000/hotel/update/6' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -54,8 +56,9 @@ curl --location --request PUT 'localhost:8000/hotel/update/6' \
     }
 
 }'
-
+```
 3. Delete Hotel
+```
 curl --location --request DELETE 'localhost:8000/hotel/delete/6' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -72,12 +75,13 @@ curl --location --request DELETE 'localhost:8000/hotel/delete/6' \
     }
 
 }'
-
+```
 4. Search Hotel ( query parameters include: city, date, rooms, stars, facilities(array) ) - reresponse in sorted order:
-
+```
 curl --location --request GET 'localhost:8000/hotel/search?city=panjim'
-
+```
 5. Add User
+```
 curl --location --request POST 'localhost:8080/user/add' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -86,7 +90,9 @@ curl --location --request POST 'localhost:8080/user/add' \
     "city":"delhi"
 }
 '
+```
 6. Update user
+```
 curl --location --request PUT 'localhost:8080/user/update/5' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -94,7 +100,9 @@ curl --location --request PUT 'localhost:8080/user/update/5' \
     "city":"mumbai"
 }
 '
+```
 7. Add review
+```
 curl --location --request POST 'localhost:8888/review/add' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -108,9 +116,9 @@ curl --location --request POST 'localhost:8888/review/add' \
         "id":1
     }
 }'
-
+```
 8. Search Review ( query parameters include : hotelName, city, gender, rating):
-
+```
 curl --location --request GET 'localhost:8888/review/search?hotelName=taj&city=pune' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -124,3 +132,4 @@ curl --location --request GET 'localhost:8888/review/search?hotelName=taj&city=p
         "id":15112111
     }
 }'
+```
